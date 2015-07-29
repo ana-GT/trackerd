@@ -16,11 +16,14 @@ Steps
    ftp://ftp.polhemus.com/pub/Linux_tools/
 
 3. Install rules file (VERY IMPORTANT)
-   * cd Software/piterm-1.0.4/fw.rules/
-   * sudo cp 90-Polhemus_trkr.rules /etc/udev/rules.d/
+   ```
+   cd Software/piterm-1.0.4/fw.rules/
+   sudo cp 90-Polhemus_trkr.rules /etc/udev/rules.d/
+   ```
 
    Example: 
    Before rules: Bus 001 Device 003: ID 0f44:ff21 Polhemus
+
    After rules: Bus 002 Device 005: ID 0f44:ff20 Polhemus
 
 4. Reload rules.d (probably you should pull out and in again the Polhemus for this to take effect as well
