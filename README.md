@@ -1,3 +1,7 @@
+Summary
+=======
+Repository with an extremely simple driver to read information from 
+the Polhemus (in cm for tracker position and quaternion for rotation)
 
 Installation instructions
 ==========================
@@ -15,9 +19,9 @@ Steps
    * cd Software/piterm-1.0.4/fw.rules/
    * sudo cp 90-Polhemus_trkr.rules /etc/udev/rules.d/
 
-   # Example: 
-   #Before rules: Bus 001 Device 003: ID 0f44:ff21 Polhemus
-   # After rules: Bus 002 Device 005: ID 0f44:ff20 Polhemus
+   Example: 
+   Before rules: Bus 001 Device 003: ID 0f44:ff21 Polhemus
+   After rules: Bus 002 Device 005: ID 0f44:ff20 Polhemus
 
 4. Reload rules.d (probably you should pull out and in again the Polhemus for this to take effect as well
    
@@ -34,8 +38,9 @@ Steps
      PATH= /proc/bus/usb/001/004
 
    * Go to /usr/local/share/PolhemusUsb and load firmware
+     ```
      sudo /sbin/./fxload -t fx2lp -D /proc/bus/usb/001/004 -I LbtyUsbHS.hex -s a3load.hex 
-
+     ```
 Note
 ----
  I noticed that once you load the firmware, the path is not important
