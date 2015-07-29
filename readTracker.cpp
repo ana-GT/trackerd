@@ -1,4 +1,7 @@
-
+/**
+ * @file readTracker.cpp
+ * @brief Reads the tracker signals and stores them in a file 
+ */
 #include <sns.h>
 #include <unistd.h>
 #include <fstream>
@@ -10,17 +13,21 @@ struct timespec t_timeout;
 
 ach_channel chan;
 std::string chan_opt("tracker");
+std::string output_file( "tracker_output.txt" );
 
 int main( int argc, char* argv[] ) {
 
   int v;
-  while( (v=getopt(argc,argv,"c:h")) != -1 ) {
+  while( (v=getopt(argc,argv,"c:ho:")) != -1 ) {
     switch(v) {
     case 'c': {
       chan_opt.assign(optarg);
     } break;
+    case 'o': {
+      output_file.assign(optarg);
+    } break;
     case 'h': {
-      printf("Syntax: %s -c CHANNEL_NAME \n", argv[0]);
+      printf("Syntax: %s -c CHANNEL_NAME -o OUTPUT_FILE.txt\n", argv[0]);
       return 1;
     } break;
     }
@@ -33,7 +40,7 @@ int main( int argc, char* argv[] ) {
   }
   
   // Loop
-  std::ofstream output( "test.txt", std::ofstream::out );
+  std::ofstream output( output_file.c_str(), std::ofstream::out );
   while(true) {
 
     // Read channel
